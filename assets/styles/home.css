@@ -82,5 +82,5 @@
 }
 
 .cart__items img {
-   
+    width: calc(100% * 1.3);
 }
