@@ -39,6 +39,12 @@
     </main>
     
     <script>
+
+        const img = document.querySelector('img');
+        img.addEventListener('click', function(e) {
+            e.preventDefault(); // Предотвращает стандартное действие по умолчанию
+        });
+
         let products = document.getElementsByClassName("product");
         let cart = document.getElementById("cart");
         let cartItems = document.querySelector(".cart__items");
@@ -53,10 +59,10 @@
                 });
 
                 cart.addEventListener("drop", function(event) {             
-                    if(cartItems.children.length > 3) {
+                    if(cartItems.children.length > 2) {
                         selected.style.position = 'absolute';
                         selected.style.left = coorX + "px";
-                        coorX += 25;
+                        coorX += 20;
                         console.log(coorX);
                     }
 
