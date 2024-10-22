@@ -46,7 +46,7 @@
         for(let product of products) {
             product.addEventListener("dragstart", function(event) {
                 let selected = event.target;
-
+                selected.style.pointerEvents = 'none';
                 savedClass = selected.className;
 
                 cart.addEventListener("dragover", function(event) {
