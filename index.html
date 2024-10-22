@@ -45,6 +45,26 @@
             e.preventDefault(); // Предотвращает стандартное действие по умолчанию
         });
 
+        img.addEventListener('contextmenu', (event) => {
+      event.preventDefault(); 
+    });
+
+    img.addEventListener('mouseover', (event) => {
+      event.preventDefault(); 
+    });
+
+    img.addEventListener('mouseout', (event) => {
+      event.preventDefault(); 
+    });
+
+    img.addEventListener('mousedown', (event) => {
+      event.preventDefault(); 
+    });
+
+    img.addEventListener('mouseup', (event) => {
+      event.preventDefault(); 
+    });
+
         let products = document.getElementsByClassName("product");
         let cart = document.getElementById("cart");
         let cartItems = document.querySelector(".cart__items");
