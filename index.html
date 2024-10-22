@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link rel="stylesheet" href="/assets/styles/home.css">
+</head>
+<body class="body">
+    <main class="main">
+            <div class="shelf">
+                <div class="shelf__row-1">
+                    <div class="product" draggable="true"><img src="/assets/images/products/product1.svg" alt=""></div>
+                    <div class="product" draggable="true"><img src="/assets/images/products/product2.svg" alt=""></div>
+                    <div class="product" draggable="true"><img src="/assets/images/products/product3.svg" alt=""></div>
+                    <div class="product" draggable="true"><img src="/assets/images/products/product4.svg" alt=""></div>
+                </div>
+
+                <div class="shelf__row-2">
+                    <div class="product" draggable="true"><img src="/assets/images/products/product5.svg" alt=""></div>
+                    <div class="product" draggable="true"><img src="/assets/images/products/product6.svg" alt=""></div>
+                    <div class="product" draggable="true"><img src="/assets/images/products/product7.svg" alt=""></div>
+                </div>
+
+                <div class="shelf__row-3">
+                    <div class="product" draggable="true"><img src="/assets/images/products/product8.svg" alt=""></div>
+                    <div class="product" draggable="true"><img src="/assets/images/products/product9.svg" alt=""></div>
+                    <div class="product" draggable="true"><img src="/assets/images/products/product10.svg" alt=""></div>
+                    <div class="product" draggable="true"><img src="/assets/images/products/product11.svg" alt=""></div>
+                </div>
+            </div>
+
+            <div class="cart" id="cart">
+                <img class="cart__img" src="/assets/images/cart.svg" alt="">
+                <div id = "cart__items" class="cart__items" >
+    
+                </div>
+            </div>
+    </main>
+    
+    <script>
+        let products = document.getElementsByClassName("product");
+        let cart = document.getElementById("cart");
+        let cartItems = document.querySelector(".cart__items");
+        let coorX = 5;
+        for(let product of products) {
+            product.addEventListener("dragstart", function(event) {
+                let selected = event.target;
+                savedClass = selected.className;
+
+                cart.addEventListener("dragover", function(event) {
+                    event.preventDefault();
+                });
+
+                cart.addEventListener("drop", function(event) {             
+                    if(cartItems.children.length > 3) {
+                        selected.style.position = 'absolute';
+                        selected.style.left = coorX + "px";
+                        coorX += 25;
+                        console.log(coorX);
+                    }
+
+                   cartItems.appendChild(selected)
+                   selected = null;
+                })
+            })
+        }
+    </script>
+</body>
+</html>
+
