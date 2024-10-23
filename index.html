@@ -29,8 +29,8 @@
                 </div>
             </div>
 
-            <div class="button-byProducts button-byProducts_hidden">
-                <a href="https://lavka.yandex.ru/ button-byProducts_active">Оплатить корзину</a>
+            <div class="button-byProducts">
+                <a href="https://lavka.yandex.ru/">Оплатить корзину</a>
             </div>
     </main>
     
@@ -46,7 +46,7 @@
         const products = document.getElementsByClassName("product");
         const cart = document.getElementById("cart");
         const cartItems = document.querySelector(".cart__items");
-        const buttonByProducts = document.querySelector(".button-byProducts a");
+        const buttonByProducts = document.querySelector(".button-byProducts");
         console.log(buttonByProducts);
         let coorX = 5;
         for(let product of products) {
@@ -60,13 +60,37 @@
 
                 cart.addEventListener("drop", function(event) {        
                     if(cartItems.children.length >= 2) {
-                        buttonByProducts.style.display = "flex";
-                        buttonByProducts.style.opacity = "1";
-                    } else {
-                        buttonByProducts.style.display = "none";
-                        buttonByProducts.style.opacity = "0";
+                        buttonByProducts.classList.add("button-byProducts_active");
                     } 
+                    
+                    if(cartItems.children.length > 3) {
+                        selected.style.position = 'absolute';
+                        selected.style.left = coorX + "px";
+                        coorX += 20;
+                        console.log(coorX);
+                    } else {
+                        selected.style.position = 'static';
+                    }
+                   cartItems.appendChild(selected)
+                   selected = null;
+                })
+            })
+        }
 
+        for(let product of products) {
+            product.addEventListener("touchstart", function(event) {
+                let selected = event.target;
+                savedClass = selected.className;
+
+                cart.addEventListener("touchmove", function(event) {
+                    event.preventDefault();
+                });
+
+                cart.addEventListener("touchend", function(event) {        
+                    if(cartItems.children.length >= 2) {
+                        buttonByProducts.classList.add("button-byProducts_active");
+                    } 
+                    
                     if(cartItems.children.length > 3) {
                         selected.style.position = 'absolute';
                         selected.style.left = coorX + "px";
