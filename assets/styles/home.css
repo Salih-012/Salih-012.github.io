@@ -111,7 +111,11 @@
     align-items: end;
     margin: 0 auto;
     left: 89px;
+<<<<<<< HEAD
     border: 3px dashed yellow;
+=======
+    border: 3px dashed green;
+>>>>>>> 56ecaca55b66efe416c83d0261cf0f2689fec3ac
 }
 
 .button-byProducts {
